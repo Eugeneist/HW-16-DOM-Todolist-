@@ -1,0 +1,58 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font: 20px/24px 'Quicksand', sans-serif;
+    font-weight: 300;
+    background-color: #cbe3f6;
+    color: #fff;
+    padding: 30px 15px 30px 15px;
+}
+
+.todolist__form{
+    font-size: 0;
+}
+
+.todolist__text{
+    font: 20px/24px 'Quicksand', sans-serif;
+    font-weight: 300;
+    margin: 0;
+    border: none;
+}
+
+.todolist__btn{
+    font: 20px/24px 'Quicksand', sans-serif;
+    font-weight: 300;
+    margin: 0;
+    border: none;
+}
+
+.todolist__title{
+    font: 35px/39px 'Quicksand', sans-serif;;
+    font-weight: 300;
+    margin: 0 0 20px 0;
+}
+
+.todolist{
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 35px 15px 35px 15px ;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #3871c1;
+    border: 2px solid #0d4e7a;
+    border-radius: 25px;
+}
+
+.error {
+    border-color: tomato;
+}
+
+.todolist__error-message{
+    font: 20px/24px 'Quicksand', sans-serif;
+    font-weight: 300;
+    color: #fff;
+}
