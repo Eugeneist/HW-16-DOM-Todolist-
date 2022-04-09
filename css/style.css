@@ -12,20 +12,58 @@ body{
 
 .todolist__form{
     font-size: 0;
+    margin: 10px 5px 10px 5px;
 }
 
 .todolist__text{
     font: 20px/24px 'Quicksand', sans-serif;
     font-weight: 300;
     margin: 0;
-    border: none;
+    padding: 1px 15px 1px 15px;
+    border: 2px solid #0d4e7a;
+    border-right: 2px solid transparent;
+    border-radius: 30px 0px 0px 30px;
+}
+
+.todolist__text:focus{
+    border: 2px solid #0d4e7a;
+    border-right: 2px solid transparent;
 }
 
 .todolist__btn{
+    width: 100px;
+    display: inline-block;
     font: 20px/24px 'Quicksand', sans-serif;
     font-weight: 300;
     margin: 0;
-    border: none;
+    cursor: pointer;
+    border: 2px solid #0d4e7a;
+    border-left: none;
+    background-color: #cbe3f6;
+    color: #3871c1;
+    border-radius: 0px 30px 30px 0px;
+}
+
+.todolist__done-btn{
+    width: 70px;
+    display: inline-block;
+    font: 16px/20px 'Quicksand', sans-serif;
+    font-weight: 300;
+    margin: -6px -6px -6px 0;
+    cursor: pointer;
+    border: 1px solid #0d4e7a;
+    background-color: #cbe3f6;
+    color: #3871c1;
+    border-radius: 0px 20px 20px 0px;
+    border-left: none;
+}
+
+.todolist__done-btn:hover, .todolist__btn:hover{
+    background-color: #a1cef3;
+}
+
+.todolist__done-btn:active, .todolist__btn:active{
+    background-color: #4c82ce;
 }
 
 .todolist__title{
@@ -47,12 +85,64 @@ body{
     border-radius: 25px;
 }
 
+.todolist__list{
+    width: 100%;
+    margin: 0 0 0 80px;
+    padding: 0;
+    counter-reset: item;
+    list-style-type: none;
+    align-self: start;
+}
+
+.todolist__item{
+    max-width: 500px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 18px 0;
+    padding:5px 5px 5px 14px; 
+    white-space: pre-line;
+    border-radius: 20px;
+    background-color: #fff;
+    color: #3871c1;
+    position: relative;
+    box-shadow: 4px 6px 2px 1px rgb(54 54 57 / 20%)
+}
+
+.todolist__item::before {
+    content: counter(item) "";
+    counter-increment: item; 
+    position: absolute;
+    top: 5px;
+    left: -18px;
+    color:#fff;
+}
+
+.todolist__item::after {
+    content: ".";
+    position: absolute;
+    top: 5px;
+    left: -5px;
+    color:#fff;
+}
+
 .error {
-    border-color: tomato;
+    border-color: rgb(255, 145, 0);
+    border-right: 2px solid rgb(255, 145, 0);
 }
 
 .todolist__error-message{
     font: 20px/24px 'Quicksand', sans-serif;
     font-weight: 300;
     color: #fff;
+}
+
+.todolist__error-message_disabled{
+    font: 20px/24px 'Quicksand', sans-serif;
+    font-weight: 300;
+    color: #fff;
+    visibility: hidden;
+}
+
+.todolist__error-message_active{
+    visibility: visible;
 }
