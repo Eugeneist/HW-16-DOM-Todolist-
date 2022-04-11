@@ -146,3 +146,8 @@ body{
 .todolist__error-message_active{
     visibility: visible;
 }
+
+.error-message__text{
+    margin: 0;
+    padding: 5px 0 5px 0;
+}

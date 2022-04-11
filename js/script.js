@@ -4,21 +4,20 @@ const form = document.querySelector(".todolist__form");
 const task = document.querySelector(".todolist__text");
 const btn = document.querySelector(".todolist__btn");
 const list = document.getElementById("list");
+const errorMessage = document.querySelector(".todolist__error-message_disabled");
 
-btn.addEventListener("click", addNewTask);
-task.addEventListener("focus", isErrorField );
+task.addEventListener("focus", handleFocus );
+form.addEventListener("submit", addToDo );
 form.addEventListener("submit", (event) => event.preventDefault());
-list.addEventListener("click", isRemoveButton );
+list.addEventListener("click", deleteTask );
 
-let errorMessage = document.createElement("div");
-errorMessage.className = "todolist__error-message_disabled";
-errorMessage.innerHTML = "This field is required!";
-btn.after(errorMessage);
-
-// выше идея в том, что бы при показе ошибки не прыгала верстка
+// let errorMessage = document.createElement("div");
+// errorMessage.className = "todolist__error-message_disabled";
+// errorMessage.innerHTML = "This field is required!";
+// btn.after(errorMessage);
 
 
-function isErrorField() {
+function handleFocus() {
     const errorField = task.classList.contains("error");
 
     if (errorField) {
@@ -32,15 +31,18 @@ function isErrorField() {
     }
 }
 
-function addNewTask() {
-
+function addToDo() {
     if (task.value.trim().length === 0) {
         task.classList.add("error");
         errorMessage.classList.toggle("todolist__error-message_active");
         btn.disabled = true; 
         return;
+    } else {
+        addNewTask();
     }
+}
 
+function addNewTask() {
     let li = document.createElement('li');
     li.textContent = task.value;
     li.className = "todolist__item";
@@ -52,7 +54,7 @@ function addNewTask() {
     form.reset();
 }
 
-function isRemoveButton(event) {
+function deleteTask(event) {
     const removeButton = event.target.className === "todolist__done-btn";
 
     if (removeButton) {
