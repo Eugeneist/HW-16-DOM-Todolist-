@@ -7,14 +7,11 @@ const list = document.getElementById("list");
 const errorMessage = document.querySelector(".todolist__error-message_disabled");
 
 task.addEventListener("focus", handleFocus );
-form.addEventListener("submit", addToDo );
-form.addEventListener("submit", (event) => event.preventDefault());
+form.addEventListener("submit", function(event){
+    event.preventDefault();
+    handleSubmit();
+});
 list.addEventListener("click", deleteTask );
-
-// let errorMessage = document.createElement("div");
-// errorMessage.className = "todolist__error-message_disabled";
-// errorMessage.innerHTML = "This field is required!";
-// btn.after(errorMessage);
 
 function handleFocus() {
     const errorField = task.classList.contains("error");
@@ -30,7 +27,7 @@ function handleFocus() {
     }
 }
 
-function addToDo() {
+function handleSubmit() {
     if (task.value.trim().length === 0) {
         task.classList.add("error");
         errorMessage.classList.toggle("todolist__error-message_active");
