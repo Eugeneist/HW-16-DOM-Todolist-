@@ -16,7 +16,6 @@ list.addEventListener("click", deleteTask );
 // errorMessage.innerHTML = "This field is required!";
 // btn.after(errorMessage);
 
-
 function handleFocus() {
     const errorField = task.classList.contains("error");
 
