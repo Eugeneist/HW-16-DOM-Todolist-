@@ -67,6 +67,12 @@ body{
     background-color: #4c82ce;
 }
 
+.btn_inactive{
+    text-decoration: none;
+    background-color: #4f91c6;
+    font-size: 0;
+}
+
 .todolist__title{
     font: 35px/39px 'Quicksand', sans-serif;;
     font-weight: 300;
@@ -130,7 +136,6 @@ body{
 
 .done{
     background-color: rgb(105, 236, 5);
-    /* text-decoration-style: solid; */
     text-decoration: line-through;
 }
 

@@ -9,7 +9,7 @@ const errorMessage = document.querySelector(".todolist__error-message_disabled")
 task.addEventListener("focus", handleFocus );
 form.addEventListener("submit", handleSubmit );
 list.addEventListener("click", deleteTask );
-list.addEventListener("click", handleDone );
+list.addEventListener("change", handleDone );
 
 function handleFocus() {
     const errorField = task.classList.contains("error");
@@ -59,7 +59,8 @@ function handleDone(event) {
     if(doneButton) {
         let row = event.target.closest(".todolist__item");
         row.classList.toggle("done");
-        row.querySelector(".todolist__del-btn").remove();
+        row.querySelector(".todolist__del-btn").classList.add("btn_inactive");
+        row.querySelector(".todolist__del-btn").disabled = true;
         event.target.disabled = true;
     }
 }
