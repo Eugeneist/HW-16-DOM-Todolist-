@@ -44,13 +44,14 @@ body{
     border-radius: 0px 30px 30px 0px;
 }
 
-.todolist__done-btn{
+.todolist__del-btn{
     width: 70px;
     display: inline-block;
     font: 16px/20px 'Quicksand', sans-serif;
     font-weight: 300;
     margin: -6px -6px -6px 0;
     cursor: pointer;
+    align-self: normal;
     border: 1px solid #0d4e7a;
     background-color: #cbe3f6;
     color: #3871c1;
@@ -58,11 +59,11 @@ body{
     border-left: none;
 }
 
-.todolist__done-btn:hover, .todolist__btn:hover{
+.todolist__del-btn:hover, .todolist__btn:hover{
     background-color: #a1cef3;
 }
 
-.todolist__done-btn:active, .todolist__btn:active{
+.todolist__del-btn:active, .todolist__btn:active{
     background-color: #4c82ce;
 }
 
@@ -96,14 +97,16 @@ body{
 
 .todolist__item{
     max-width: 500px;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 30px 1fr 64px;
+    align-items: center;
     margin: 0 0 18px 0;
     padding:5px 5px 5px 14px; 
     white-space: pre-line;
     border-radius: 20px;
     background-color: #fff;
     color: #3871c1;
+    overflow: hidden;
     position: relative;
     box-shadow: 4px 6px 2px 1px rgb(54 54 57 / 20%)
 }
@@ -123,6 +126,12 @@ body{
     top: 5px;
     left: -5px;
     color:#fff;
+}
+
+.done{
+    background-color: rgb(105, 236, 5);
+    /* text-decoration-style: solid; */
+    text-decoration: line-through;
 }
 
 .error {

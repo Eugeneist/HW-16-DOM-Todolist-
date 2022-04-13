@@ -7,11 +7,9 @@ const list = document.getElementById("list");
 const errorMessage = document.querySelector(".todolist__error-message_disabled");
 
 task.addEventListener("focus", handleFocus );
-form.addEventListener("submit", function(event){
-    event.preventDefault();
-    handleSubmit();
-});
+form.addEventListener("submit", handleSubmit );
 list.addEventListener("click", deleteTask );
+list.addEventListener("click", handleDone );
 
 function handleFocus() {
     const errorField = task.classList.contains("error");
@@ -27,7 +25,8 @@ function handleFocus() {
     }
 }
 
-function handleSubmit() {
+function handleSubmit(event) {
+    event.preventDefault()
     if (task.value.trim().length === 0) {
         task.classList.add("error");
         errorMessage.classList.toggle("todolist__error-message_active");
@@ -42,20 +41,40 @@ function addNewTask() {
     let li = document.createElement('li');
     li.textContent = task.value;
     li.className = "todolist__item";
+    let done = document.createElement('input');
+    done.type = "checkbox";
+    done.className = "form-check-input";
+    let del = document.createElement('button');
+    del.className = "todolist__del-btn";
+    del.innerHTML = "Delete";
     list.append(li);
-    let done = document.createElement('button');
-    done.className = "todolist__done-btn";
-    done.innerHTML = "Done";
-    li.append(done);
+    li.append(del);
+    li.prepend(done);
     form.reset();
 }
 
+function handleDone(event) {
+    const doneButton = event.target.className === "form-check-input";
+    
+    if(doneButton) {
+        let row = event.target.closest(".todolist__item");
+        row.classList.toggle("done");
+        row.querySelector(".todolist__del-btn").remove();
+        event.target.disabled = true;
+    }
+}
+
+
 function deleteTask(event) {
-    const removeButton = event.target.className === "todolist__done-btn";
+    const removeButton = event.target.className === "todolist__del-btn";
 
     if (removeButton) {
         let row = event.target.closest(".todolist__item");
         row.remove();
     }
 }
+
+
+
+
 
